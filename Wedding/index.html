@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slick-theme.css">
     <!-- css -->
+    <!-- ################ TODO: ↓↓↓↓↓↓↓ 작업해야할 파일 ################ -->
     <link rel="stylesheet" href="css/style.css">
-  
+    
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- slick js CDN -->
-    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
     <!-- slikc js FILE -->
     <script src="js/slick.min.js"></script>
     <!-- js -->
+    <!-- ################ TODO: ↓↓↓↓↓↓↓ 작업해야할 파일 ################ -->
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -44,10 +44,10 @@
             <h3 class="common-title ft-pt">Aloha Wedding</h3>
             <nav>
                 <ul>
-                    <li><a href="#">혼주 연락하기</a></li>
-                    <li><a href="#">갤러리</a></li>
-                    <li><a href="#">오시는 길</a></li>
-                    <li><a href="#">메시지</a></li>
+                    <li><a href="#profile">혼주 연락하기</a></li>
+                    <li><a href="#gallery">갤러리</a></li>
+                    <li><a href="#place">오시는 길</a></li>
+                    <li><a href="#reply">메시지</a></li>
                 </ul>
             </nav>
 
@@ -63,7 +63,7 @@
     <!-- 전체영역 -->
     <div id="wrap">
 
-        <section class="main border">
+        <section class="main border" id="main">
             <div class="inner">
                 
                 <div class="img-box">
@@ -89,7 +89,7 @@
         </section>
 
 
-        <section class="profile">
+        <section class="profile" id="profile">
 
             <h3 class="common-title">혼주에게 연락하기</h3>
 
@@ -180,7 +180,7 @@
             </div>
         </section>
 
-        <section class="gallery">
+        <section class="gallery" id="gallery">
             <h3 class="border-title ft-pt">Gallery</h3>
 
             <div class="margin-box">
@@ -242,7 +242,7 @@
         </section>
 
 
-        <section class="place">
+        <section class="place" id="place">
 
             <h3 class="common-title">오시는 길</h3>
 
@@ -315,7 +315,7 @@
         </section>
 
 
-        <section class="reply">
+        <section class="reply" id="reply">
 
             <h3 class="border-title">메시지</h3>
 
@@ -366,69 +366,10 @@
 
     
 
-
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4d9c4ccd55af22e749af292453ba1fa9"></script>
-
+    <!-- ################ TODO: 여기에 작성 ################ -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=[JavaScript키]"></script>
     <script>
-
-        var lat = 37.51826573899883		// 위도
-        var lon = 126.90642947856348
-
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
-                level: 4, // 지도의 확대 레벨
-                mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-            }; 
-
-        // 지도를 생성한다 
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-        // 지도 타입 변경 컨트롤을 생성한다
-        var mapTypeControl = new kakao.maps.MapTypeControl();
-
-        // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-        map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
-
-        // 지도에 확대 축소 컨트롤을 생성한다
-        var zoomControl = new kakao.maps.ZoomControl();
-
-        // 지도의 우측에 확대 축소 컨트롤을 추가한다
-        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-        // 지도에 마커를 생성하고 표시한다
-        var marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(lat, lon), // 마커의 좌표
-            map: map // 마커를 표시할 지도 객체
-        });
-
-        // 커스텀 오버레이를 생성하고 지도에 표시한다
-        var customOverlay = new kakao.maps.CustomOverlay({
-            map: map,
-            content: '<div style="padding:10px 15px;background:#fff; border: 1px solid black;">ALOHA 웨딩홀</div>', 
-            position: new kakao.maps.LatLng(lat, lon), // 커스텀 오버레이를 표시할 좌표
-            xAnchor: 0.5, // 컨텐츠의 x 위치
-            yAnchor: 0 // 컨텐츠의 y 위치
-        });
-
-
-        // 지도에 클릭 이벤트를 등록합니다
-        // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-            
-            // 클릭한 위도, 경도 정보를 가져옵니다 
-            var latlng = mouseEvent.latLng; 
-            
-            // 마커 위치를 클릭한 위치로 옮깁니다
-            marker.setPosition(latlng);
-            
-            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-            message += '경도는 ' + latlng.getLng() + ' 입니다';
-            
-            var resultDiv = document.getElementById('clickLatlng'); 
-            resultDiv.innerHTML = message;
-            
-        });
+        // 카카오 지도 API 기능 구현하기
 
     </script>
 
